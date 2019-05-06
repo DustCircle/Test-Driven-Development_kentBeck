@@ -1,45 +1,41 @@
-public class Money implements Expression {
+public class Money implements  Expression {
+
     protected int amount;
     protected String currency;
 
-    Money(int amount, String currency){
+    Money(int amount, String currnecy){
         this.amount = amount;
-        this.currency = currency;
+        this.currency = currnecy;
     }
 
-    static Money dollar(int amount) {
-        return new Money(amount, "USD");
-    }
-
-    static Money franc(int amount) {
-        return new Money(amount, "CHF");
-    }
-
-    public Expression times(int multiplier){
+    public final Expression times(int multiplier){
         return new Money(amount * multiplier,currency);
     }
 
-    String currency(){
-        return currency;
+    public final boolean equals(Object object){
+        Money money = (Money) object;
+        return this.amount == money.amount &&
+                currency().equals(money.currency());
     }
 
-    public Expression plus (Expression addend) {
-        return new Sum(this, addend);
+    public Expression plus(Expression addend){
+        return new Sum (this, addend);
     }
 
     public Money reduce(Bank bank, String to) {
-        int rate = bank.rate(currency, to);
-        return new Money(amount / rate , to);
+        int rate = bank.reduce(currency,to);
+        return new Money(amount / rate, to);
     }
 
-    @Override
-    public String toString() {
-        return amount + " " + currency;
+    public static final Money dollar(int amount){
+        return new Money(amount,"USD");
     }
 
-    @Override
-    public boolean equals(Object object){
-        Money money = (Money) object;
-        return money.amount == this.amount && currency().equals(money.currency());
+    public static final Money franc(int amount){
+        return new Money(amount,"CHF");
+    }
+
+    public String currency(){
+        return currency;
     }
 }

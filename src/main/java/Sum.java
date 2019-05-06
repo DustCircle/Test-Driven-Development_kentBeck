@@ -14,17 +14,10 @@ public class Sum implements Expression {
     }
 
     public Expression plus(Expression addend) {
-        return null;
+        return new Sum(this, addend);
     }
 
-    public Expression times(int amout){
-        return null;
-    }
-
-    Money reduce(Expression source, String to) {
-        if(source instanceof Money)
-            return (Money) source.reduce(null, to);
-        Sum sum = (Sum) source;
-        return sum.reduce(new Bank(), to);
+    public Expression times(int multiplier){
+        return new Sum(augend.times(multiplier), addend.times (multiplier));
     }
 }
