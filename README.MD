@@ -17,3 +17,5 @@
 - [x] 공용 times
 - [ ] 통화 구현
 - [x] Franc 와 Dollar 비교하기
+- [x] Bank.reduce(Money)
+- [ ] Money에 대한 통화 변환을 수행하는 Reduce
