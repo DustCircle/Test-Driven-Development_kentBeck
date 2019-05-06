@@ -12,6 +12,7 @@
 - [ ] Equal null 을 대처
 - [ ] Equal object 를 대처
 - [x] 5CHF * 2 = 10 CHF -> 다른 화폐 적용
+- [x] Dollar/Franc 중복
 - [x] 공용 equals
 - [x] 공용 times
 - [ ] 통화 구현
